@@ -10,4 +10,4 @@ WORKDIR /app
 COPY --from=build /app/target/learnxchange.jar app.jar
 ENV JAVA_TOOL_OPTIONS="-XX:MaxRAMPercentage=75"
 EXPOSE 8080
-CMD ["java", "-jar", "app.jar"]
+CMD ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
